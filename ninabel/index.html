@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OrtoDent Grupo — Odontología de autor en Quito</title>
+  <meta name="description" content="Clínica dental premium en Quito: ortodoncia, implantes, estética y diseño de sonrisa con precisión clínica absoluta." />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --background: #0c0c0e;
+      --foreground: #f2efe8;
+      --card: #141416;
+      --muted: #9a958c;
+      --border: #2a2a2e;
+      --gold: #c9a84c;
+      --gold-soft: #e0c878;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* PRELOADER */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: var(--background);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    #preloader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .loader-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 2rem;
+      background: rgba(12, 12, 14, 0.8);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      letter-spacing: 0.04em;
+    }
+    .logo span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 1.7rem;
+      background: var(--gold);
+      color: #111;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      border-radius: 2px;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn:hover {
+      background: var(--gold-soft);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px -12px rgba(201, 168, 76, 0.45);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--foreground);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: transparent;
+      box-shadow: none;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 9rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -15%; left: -10%;
+      width: 55vw; height: 55vw;
+      background: radial-gradient(circle, rgba(201,168,76,0.09), transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.8rem;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 2rem; height: 1px;
+      background: var(--gold);
+      opacity: 0.55;
+    }
+    .hero h1 {
+      font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+      line-height: 1.08;
+      max-width: 16ch;
+      margin-bottom: 1.6rem;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 440px;
+      margin-bottom: 2.4rem;
+      line-height: 1.7;
+    }
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 4rem;
+    }
+    .scroll-hint {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 2.8rem;
+      background: var(--gold);
+      opacity: 0.6;
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.7); }
+      50% { opacity: 0.8; transform: scaleY(1); }
+    }
+
+    /* SECTIONS */
+    section { padding: 6.5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-header { margin-bottom: 3.2rem; }
+    .section-title {
+      font-size: clamp(2rem, 3.8vw, 2.9rem);
+      margin-top: 0.6rem;
+      margin-bottom: 0.9rem;
+    }
+    .section-desc {
+      color: var(--muted);
+      max-width: 460px;
+      font-size: 0.98rem;
+    }
+
+    /* EXPERIENCE */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.4rem;
+    }
+    .pillar {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 2.1rem 1.9rem;
+      border-radius: 3px;
+      transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .pillar:hover {
+      border-color: rgba(201,168,76,0.4);
+      transform: translateY(-7px);
+      box-shadow: 0 20px 50px -20px rgba(0,0,0,0.5);
+    }
+    .pillar-icon {
+      color: var(--gold);
+      font-size: 1.35rem;
+      margin-bottom: 1.3rem;
+    }
+    .pillar h3 { font-size: 1.25rem; margin-bottom: 0.7rem; }
+    .pillar p { color: var(--muted); font-size: 0.92rem; line-height: 1.65; }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.15rem;
+    }
+    .service {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 1.7rem 1.6rem;
+      border-radius: 3px;
+      transition: border-color 0.3s;
+    }
+    .service:hover { border-color: var(--gold); }
+    .service h3 {
+      font-size: 1.15rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .service p { color: var(--muted); font-size: 0.9rem; }
+
+    /* GALLERY */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      aspect-ratio: 3/4;
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0.9;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.08);
+      opacity: 1;
+    }
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(12,12,14,0.5), transparent 50%);
+      pointer-events: none;
+    }
+
+    /* LOCATION */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 1.8rem;
+    }
+    .info-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 2.2rem;
+      border-radius: 3px;
+    }
+    .info-card p {
+      margin-bottom: 1.3rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .info-card strong {
+      color: var(--foreground);
+      display: block;
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+    .info-card a { color: var(--gold); }
+    .map-container {
+      border-radius: 3px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      height: 100%;
+      min-height: 340px;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: grayscale(30%) contrast(1.1);
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 7.5rem 2rem;
+      position: relative;
+    }
+    .cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(201,168,76,0.08), transparent 65%);
+      pointer-events: none;
+    }
+    .cta h2 {
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .cta p {
+      color: var(--muted);
+      margin-bottom: 2.2rem;
+      position: relative;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.4rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    /* WhatsApp */
+    .wa-float {
+      position: fixed;
+      bottom: 1.7rem;
+      right: 1.7rem;
+      width: 54px;
+      height: 54px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 28px rgba(37,211,102,0.4);
+      z-index: 90;
+      transition: transform 0.3s;
+    }
+    .wa-float:hover { transform: scale(1.08); }
+    .wa-float svg { width: 26px; height: 26px; fill: white; }
+
+    /* Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .location-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      header { padding: 1rem 1.3rem; }
+      section { padding: 4.5rem 1.3rem; }
+      .hero { padding: 7.5rem 1.3rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="loader-text">OrtoDent</div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">Orto<span>Dent</span> Grupo</div>
+    <div class="nav-links">
+      <a href="#experiencia">Experiencia</a>
+      <a href="#tratamientos">Tratamientos</a>
+      <a href="#galeria">Galería</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a href="https://wa.me/593978969891" class="btn" target="_blank" rel="noopener">WhatsApp</a>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Odontología de autor — Quito</div>
+      <h1>Tu sonrisa, reescrita en la sombra de la precisión.</h1>
+      <p>En OrtoDent Grupo transformamos la odontología en una experiencia de detalle absoluto. Tecnología avanzada, manos expertas, resultados que no se explican: se revelan.</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/593978969891" class="btn" target="_blank" rel="noopener">Descubre tu transformación</a>
+        <a href="#tratamientos" class="btn btn-outline">Ver tratamientos</a>
+      </div>
+      <div class="scroll-hint">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCIA -->
+  <section id="experiencia">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">Nuestra esencia</div>
+        <h2 class="section-title">Experiencia de autor</h2>
+        <p class="section-desc">Cada detalle está pensado para que tu visita sea tan precisa como memorable.</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar reveal">
+          <div class="pillar-icon">◇</div>
+          <h3>Precisión Clínica</h3>
+          <p>Cada procedimiento es calculado al milímetro. La tecnología que usamos no perdona errores, solo entrega certezas.</p>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-icon">✧</div>
+          <h3>Diseño de Sonrisa</h3>
+          <p>Tu sonrisa es analizada como una obra: proporción, simetría, carácter. El resultado, siempre, eres tú — en tu mejor versión.</p>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-icon">○</div>
+          <h3>Experiencia Sin Fricción</h3>
+          <p>Desde el primer mensaje hasta el último control, todo fluye. Sin esperas innecesarias, sin incertidumbre.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRATAMIENTOS -->
+  <section id="tratamientos" style="background:#0a0a0c;">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">Lo que hacemos</div>
+        <h2 class="section-title">Tratamientos</h2>
+        <p class="section-desc">Soluciones de alto nivel pensadas para resultados naturales y duraderos.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service reveal">
+          <h3>Ortodoncia Invisible</h3>
+          <p>Alineadores transparentes de última generación. Resultados precisos y discretos.</p>
+        </div>
+        <div class="service reveal">
+          <h3>Ortodoncia Tradicional</h3>
+          <p>Brackets estéticos y metálicos de alta precisión para casos complejos.</p>
+        </div>
+        <div class="service reveal">
+          <h3>Diseño de Sonrisa</h3>
+          <p>Blanqueamiento, carillas y rehabilitación completa con resultados naturales.</p>
+        </div>
+        <div class="service reveal">
+          <h3>Implantes Dentales</h3>
+          <p>Soluciones fijas y permanentes con máxima biocompatibilidad.</p>
+        </div>
+        <div class="service reveal">
+          <h3>Odontología Infantil</h3>
+          <p>Atención especializada y amable para los más pequeños.</p>
+        </div>
+        <div class="service reveal">
+          <h3>Revisiones y Prevención</h3>
+          <p>Diagnósticos digitales y planes de mantenimiento a largo plazo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section id="galeria">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">Resultados reales</div>
+        <h2 class="section-title">La transformación no miente.</h2>
+        <p class="section-desc">Desliza. Compara. Decide.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80" alt="Sonrisa 1" loading="lazy">
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80" alt="Sonrisa 2" loading="lazy">
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80" alt="Clínica" loading="lazy">
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80" alt="Tratamiento" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN + MAPA -->
+  <section id="ubicacion">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">Dónde estamos</div>
+        <h2 class="section-title">Visítanos en Quito</h2>
+      </div>
+      <div class="location-grid">
+        <div class="info-card reveal">
+          <p>
+            <strong>Dirección</strong>
+            Av. Lizardo Ruiz y Gral. José María Guerrero<br>
+            170301, Quito
+          </p>
+          <p>
+            <strong>Horario</strong>
+            Lun – Vie: 9:00 – 19:00<br>
+            Sáb: 9:00 – 14:00
+          </p>
+          <p>
+            <strong>WhatsApp</strong>
+            <a href="https://wa.me/593978969891" target="_blank" rel="noopener">+593 97 896 9891</a>
+          </p>
+          <div style="margin-top:1.6rem;">
+            <a href="https://wa.me/593978969891" class="btn" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+          </div>
+        </div>
+        <div class="map-container reveal">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.792!2d-78.492!3d-0.180!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMMKwMTAnNDguMCJTIDc4wrAyOSczMS4yIlc!5e0!3m2!1ses!2sec!4v1700000000000"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta" id="contacto">
+    <h2 class="reveal">Tu sonrisa no puede seguir esperando en la oscuridad.</h2>
+    <p class="reveal">Escríbenos y empieza el proceso hoy.</p>
+    <a href="https://wa.me/593978969891" class="btn reveal" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="logo">Orto<span>Dent</span> Grupo</div>
+    <div>© 2026 OrtoDent Grupo — Quito, Ecuador</div>
+    <div>
+      <a href="https://www.facebook.com/share/1CKJKjVy9B/" target="_blank" rel="noopener" style="color:var(--gold);">Facebook</a>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a href="https://wa.me/593978969891" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    // Preloader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('preloader').classList.add('hide');
+      }, 900);
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

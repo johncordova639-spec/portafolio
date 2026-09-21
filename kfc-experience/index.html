@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>CRUJIENTE — Fuego, Grasa Buena y Leyenda Frita</title>
+<meta name="description" content="Una experiencia cinematográfica 3D de comida frita crujiente. Ordena ahora." />
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ================= LOADER ================= -->
+<div id="loader">
+  <div class="loader-inner">
+    <span class="loader-mark">C</span>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+    <p class="loader-text">Calentando el aceite…</p>
+  </div>
+</div>
+
+<!-- ================= NAVBAR ================= -->
+<header id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">CRUJIENTE<span>°</span></a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#menu">Menú</a>
+      <a href="#combos">Combos</a>
+      <a href="#promos">Promociones</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="cart-btn" id="cartBtn" aria-label="Carrito">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9.5" cy="20.5" r="1.3"/><circle cx="17.5" cy="20.5" r="1.3"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+
+  <div class="hero-vignette"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Receta original · 11 especias secretas</p>
+    <h1 class="hero-title">
+      <span class="line" data-line="1">EL CRUJIDO</span>
+      <span class="line" data-line="2">QUE APAGA</span>
+      <span class="line" data-line="3">CUALQUIER ANTOJO</span>
+    </h1>
+    <p class="hero-sub">Pollo dorado, jugoso por dentro, crujiente por fuera. Directo del fuego a tu mesa, en menos de 15 minutos.</p>
+
+    <div class="hero-cta">
+      <button class="btn btn-primary" id="orderNowBtn">Ordena ahora</button>
+      <button class="btn btn-ghost" id="viewMenuBtn">Ver menú</button>
+    </div>
+  </div>
+
+  <div class="hero-founder" id="founderMount" aria-hidden="true">
+    <div class="founder-plaque">
+      <span class="founder-name">Cnel. H. Barnes</span>
+      <span class="founder-role">Fundador · Desde 1962</span>
+    </div>
+  </div>
+
+  <button class="scroll-cue" id="scrollCue" aria-label="Bajar">
+    <span></span>
+  </button>
+</section>
+
+<!-- ================= MENU ================= -->
+<section id="menu">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>El menú que manda</h2>
+      <p>Cada pieza pasa 12 horas en marinado y sale del fuego en menos de 4 minutos.</p>
+    </div>
+
+    <div class="menu-grid" id="menuGrid">
+      <!-- cards injected/duplicated via JS-ready markup below -->
+      <article class="menu-card" data-tilt data-product="crispy">
+        <div class="menu-card-media">
+          <div class="mini-3d" data-mini-scene="chicken"></div>
+        </div>
+        <div class="menu-card-body">
+          <h3>Pollo Crispy</h3>
+          <p>Piezas doradas, marinado de 11 especias, cocción a fuego alto.</p>
+          <div class="menu-card-footer">
+            <span class="price">$4.50</span>
+            <button class="btn-add" data-name="Pollo Crispy" data-price="4.50">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card" data-tilt data-product="burger">
+        <div class="menu-card-media"><div class="media-fallback burger"></div></div>
+        <div class="menu-card-body">
+          <h3>Hamburguesa Fuego</h3>
+          <p>Pechuga crocante, salsa ahumada, pan brioche tostado en mantequilla.</p>
+          <div class="menu-card-footer">
+            <span class="price">$5.90</span>
+            <button class="btn-add" data-name="Hamburguesa Fuego" data-price="5.90">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card" data-tilt data-product="papas">
+        <div class="menu-card-media"><div class="media-fallback papas"></div></div>
+        <div class="menu-card-body">
+          <h3>Papas Rústicas</h3>
+          <p>Corte grueso, sal ahumada y un toque de pimentón.</p>
+          <div class="menu-card-footer">
+            <span class="price">$2.80</span>
+            <button class="btn-add" data-name="Papas Rústicas" data-price="2.80">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card" data-tilt data-product="bebida">
+        <div class="menu-card-media"><div class="media-fallback bebida"></div></div>
+        <div class="menu-card-body">
+          <h3>Limonada de Maracuyá</h3>
+          <p>Fruta natural, helada, hecha en casa cada mañana.</p>
+          <div class="menu-card-footer">
+            <span class="price">$2.20</span>
+            <button class="btn-add" data-name="Limonada de Maracuyá" data-price="2.20">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card" data-tilt data-product="combo" id="combos">
+        <div class="menu-card-media"><div class="media-fallback combo"></div></div>
+        <div class="menu-card-body">
+          <h3>Combo Familiar</h3>
+          <p>8 piezas, 2 acompañantes grandes y 4 bebidas. Para compartir (o no).</p>
+          <div class="menu-card-footer">
+            <span class="price">$18.90</span>
+            <button class="btn-add" data-name="Combo Familiar" data-price="18.90">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card" data-tilt data-product="promo">
+        <div class="menu-card-media"><div class="media-fallback promo"></div></div>
+        <div class="menu-card-body">
+          <h3>Promo del Fuego</h3>
+          <p>3 piezas + papas + bebida, solo por tiempo limitado.</p>
+          <div class="menu-card-footer">
+            <span class="price">$6.50</span>
+            <button class="btn-add" data-name="Promo del Fuego" data-price="6.50">Agregar</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROMOCIONES ================= -->
+<section id="promos">
+  <div class="section-inner">
+    <div class="section-head light">
+      <h2>Promos que no puedes dejar pasar</h2>
+      <p>Válidas de lunes a jueves. El fuego no espera.</p>
+    </div>
+
+    <div class="promo-track">
+      <article class="promo-card" data-reveal>
+        <span class="promo-tag">-35%</span>
+        <div class="promo-media combo"></div>
+        <h3>Balde Mediano</h3>
+        <p>12 piezas crujientes + 2 papas grandes</p>
+        <div class="promo-price">
+          <span class="old">$24.90</span>
+          <span class="new">$16.20</span>
+        </div>
+        <button class="btn btn-primary small">Quiero esta promo</button>
+      </article>
+
+      <article class="promo-card" data-reveal>
+        <span class="promo-tag">2x1</span>
+        <div class="promo-media burger"></div>
+        <h3>Martes de Hamburguesa</h3>
+        <p>Lleva dos Hamburguesas Fuego por el precio de una</p>
+        <div class="promo-price">
+          <span class="old">$11.80</span>
+          <span class="new">$5.90</span>
+        </div>
+        <button class="btn btn-primary small">Quiero esta promo</button>
+      </article>
+
+      <article class="promo-card" data-reveal>
+        <span class="promo-tag">Nuevo</span>
+        <div class="promo-media crispy"></div>
+        <h3>Tira Doble Picante</h3>
+        <p>Marinado extra picante, salsa de la casa incluida</p>
+        <div class="promo-price">
+          <span class="new">$4.90</span>
+        </div>
+        <button class="btn btn-primary small">Quiero esta promo</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCIA 3D ================= -->
+<section id="experiencia">
+  <canvas id="experience-canvas"></canvas>
+  <div class="experience-overlay">
+    <p class="exp-eyebrow">La cocina, de cerca</p>
+    <h2>Fuego real. <br/>Textura real.</h2>
+    <p class="exp-copy">Cada pieza se cocina a la vista, en aceite limpio, hasta el punto exacto donde la corteza truena y el interior se mantiene jugoso.</p>
+  </div>
+</section>
+
+<!-- ================= NOSOTROS ================= -->
+<section id="nosotros">
+  <div class="section-inner nosotros-grid">
+    <div class="nosotros-copy">
+      <p class="section-eyebrow">Desde 1962</p>
+      <h2>Una receta que no ha cambiado. Una obsesión que tampoco.</h2>
+      <p>Todo empezó en una cocina pequeña con una idea simple: freír pollo como si fuera para tu propia familia. Hoy seguimos usando el mismo marinado de 11 especias, el mismo tiempo de reposo y la misma exigencia por el punto exacto de cocción.</p>
+      <div class="nosotros-stats">
+        <div><strong>60+</strong><span>años de receta</span></div>
+        <div><strong>11</strong><span>especias secretas</span></div>
+        <div><strong>4 min</strong><span>del fuego a tu mesa</span></div>
+      </div>
+    </div>
+    <div class="nosotros-visual">
+      <div class="founder-card">
+        <div class="founder-frame"></div>
+        <p>"El pollo se respeta. El aceite se respeta. El cliente, más."</p>
+        <span>— Cnel. H. Barnes, Fundador</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO / FOOTER ================= -->
+<footer id="contacto">
+  <div class="footer-inner">
+    <div class="footer-col brand">
+      <a href="#hero" class="nav-logo">CRUJIENTE<span>°</span></a>
+      <p>Comida rápida hecha con obsesión desde 1962.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="TikTok">TT</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Enlaces</h4>
+      <a href="#menu">Menú</a>
+      <a href="#combos">Combos</a>
+      <a href="#promos">Promociones</a>
+      <a href="#nosotros">Nosotros</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Horarios</h4>
+      <p>Lun – Jue: 10:00 – 22:00</p>
+      <p>Vie – Dom: 10:00 – 23:30</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <p>hola@crujiente.com</p>
+      <p>+593 99 000 0000</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Crujiente. Todos los derechos reservados.</span>
+    <div class="footer-legal">
+      <a href="#">Términos</a>
+      <a href="#">Privacidad</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= TOAST CARRITO ================= -->
+<div class="toast" id="toast"></div>
+
+<!-- ================= LIBRERÍAS (CDN) ================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r160/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script src="js/scene.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

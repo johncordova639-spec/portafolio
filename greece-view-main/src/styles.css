@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #1d1e1f;
+  --color-muted: #b4b4ae;
+  --color-line: rgba(241, 241, 237, 0.2);
+  --color-paper: #2b2c2d;
+  --color-paper-deep: #222324;
+  --color-accent: #9b7550;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "DM Sans", Arial, sans-serif;
+  --font-mono: "DM Mono", monospace;
+  --background-image-hero-vignette: radial-gradient(ellipse 78% 84% at 50% 48%, rgb(10 11 10 / 0) 0%, rgb(10 11 10 / 0.04) 38%, rgb(10 11 10 / 0.3) 68%, rgb(10 11 10 / 0.88) 100%), linear-gradient(180deg, rgb(10 11 10 / 0.4) 0%, rgb(10 11 10 / 0.02) 42%, rgb(10 11 10 / 0.11) 69%, rgb(10 11 10 / 0.76) 100%);
+  --animate-loading-sweep: loading-sweep 1.6s cubic-bezier(.65, 0, .35, 1) infinite;
+  --animate-nudge: nudge 1.8s ease-in-out infinite;
+
+  @keyframes loading-sweep {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(385%); }
+  }
+
+  @keyframes nudge {
+    0%, 100% { transform: translateY(-2px); opacity: .6; }
+    50% { transform: translateY(3px); opacity: 1; }
+  }
+}
+
+body * {
+  color: #ffffff;
+}

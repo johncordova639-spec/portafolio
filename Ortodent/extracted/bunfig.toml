@@ -1,0 +1,6 @@
+[install]
+saveTextLockfile = true
+# Se desactiva la validación de antigüedad del paquete para evitar retrasos innecesarios en la instalación.
+minimumReleaseAge = 0
+# Las exclusiones quedan vacías para evitar espera extra al instalar dependencias del proyecto.
+minimumReleaseAgeExcludes = []

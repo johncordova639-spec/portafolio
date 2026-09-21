@@ -1,0 +1,1 @@
+Coloca aquí modelos .glb (ej. chicken.glb, bucket.glb) si quieres reemplazar la geometría procedural.

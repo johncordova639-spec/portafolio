@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>V Fasion — Anime Streetwear</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- CURSOR -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- PARTÍCULAS FONDO -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="logo">
+      <span class="logo-icon">◈</span>
+      Vero<strong>,J STORE</strong>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#coleccion">Colección</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <button class="btn-carrito" id="btnCarrito">
+      🛒 <span class="carrito-badge" id="carritoBadge">0</span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="esfera esfera-1"></div>
+    <div class="esfera esfera-2"></div>
+    <div class="esfera esfera-3"></div>
+
+    <div class="hero-scene">
+      <div class="hero-content">
+        <span class="hero-badge">✦ NUEVA COLECCIÓN 2025</span>
+        <div class="hero-title">
+          <span class="line-1">ANIME</span>
+          <span class="line-2">STREETWEAR</span>
+          <span class="line-3">COLLECTION</span>
+        </div>
+        <p class="hero-sub">Prendas de edición limitada con arte de tus series favoritas.<br>Calidad premium, envío a todo el país.</p>
+        <div class="hero-btns">
+          <a href="#coleccion" class="btn-primary">Ver Colección →</a>
+          <a href="#nosotros" class="btn-secondary">Nuestra historia</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><strong>+500</strong><span>CLIENTES</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><strong>5</strong><span>DISEÑOS</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><strong>100%</strong><span>PREMIUM</span></div>
+        </div>
+      </div>
+
+      <!-- HERO CARDS 3D -->
+      <div class="hero-cards-3d" id="heroCards">
+        <div class="hero-card-float" style="--i:0">
+          <img src="img/prenda1.png" alt="Sweatshirt Manga"/>
+        </div>
+        <div class="hero-card-float" style="--i:1">
+          <img src="img/prenda2.png" alt="Hoodie Gojo"/>
+        </div>
+        <div class="hero-card-float" style="--i:2">
+          <img src="img/prenda3.png" alt="Hoodie Kaeruko"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- COLECCIÓN -->
+  <section class="coleccion" id="coleccion">
+    <div class="seccion-header">
+      <p class="seccion-sub">— CATÁLOGO COMPLETO —</p>
+      <h2>NUESTRA <span>COLECCIÓN</span></h2>
+    </div>
+
+    <div class="productos-grid" id="productosGrid">
+
+      <!-- CARD 1 -->
+      <div class="prod-card" data-id="1">
+        <div class="prod-card-inner" id="card1">
+          <div class="prod-card-face">
+            <div class="prod-img-wrap">
+              <img src="img/prenda1.png" alt="Hoddie Manga"/>
+              <div class="prod-shine" id="shine1"></div>
+              <span class="prod-num">01</span>
+              <span class="prod-badge">SWEATSHIRT</span>
+            </div>
+            <div class="prod-info">
+              <div>
+                <p class="prod-nombre">Kaoru Hana — Birthday</p>
+                <p class="prod-precio">$39.99</p>
+              </div>
+              <div class="prod-footer">
+                <div class="prod-colores">
+                  <span class="mini-color" style="background:#f5f0e8"></span>
+                  <span class="mini-color" style="background:#1a1a1a"></span>
+                </div>
+                <button class="prod-ver-btn" onclick="abrirModal(1)">VER →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="prod-card" data-id="2">
+        <div class="prod-card-inner" id="card2">
+          <div class="prod-card-face">
+            <div class="prod-img-wrap">
+              <img src="img/prenda2.png" alt="Hoodie Gojo"/>
+              <div class="prod-shine" id="shine2"></div>
+              <span class="prod-num">02</span>
+              <span class="prod-badge">HOODIE</span>
+            </div>
+            <div class="prod-info">
+              <div>
+                <p class="prod-nombre">Hoodie Gojo — Oversize</p>
+                <p class="prod-precio">$34.99</p>
+              </div>
+              <div class="prod-footer">
+                <div class="prod-colores">
+                  <span class="mini-color" style="background:#1a1a1a"></span>
+                  <span class="mini-color" style="background:#2d2d2d"></span>
+                </div>
+                <button class="prod-ver-btn" onclick="abrirModal(2)">VER →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="prod-card" data-id="3">
+        <div class="prod-card-inner" id="card3">
+          <div class="prod-card-face">
+            <div class="prod-img-wrap">
+              <img src="img/prenda3.png" alt="Hoodie Toji Fushiguro"/>
+              <div class="prod-shine" id="shine3"></div>
+              <span class="prod-num">03</span>
+              <span class="prod-badge">HOODIE</span>
+            </div>
+            <div class="prod-info">
+              <div>
+                <p class="prod-nombre">Toji Fushiguro — Buzo</p>
+                <p class="prod-precio">$34.99</p>
+              </div>
+              <div class="prod-footer">
+                <div class="prod-colores">
+                  <span class="mini-color" style="background:#1a1a1a"></span>
+                  <span class="mini-color" style="background:#3d2040"></span>
+                </div>
+                <button class="prod-ver-btn" onclick="abrirModal(3)">VER →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="prod-card" data-id="4">
+        <div class="prod-card-inner" id="card4">
+          <div class="prod-card-face">
+            <div class="prod-img-wrap">
+              <img src="img/prenda4.png" alt="Tee Sanji"/>
+              <div class="prod-shine" id="shine4"></div>
+              <span class="prod-num">04</span>
+              <span class="prod-badge">T-SHIRT</span>
+            </div>
+            <div class="prod-info">
+              <div>
+                <p class="prod-nombre">Tee Sanji — One Piece</p>
+                <p class="prod-precio">$22.99</p>
+              </div>
+              <div class="prod-footer">
+                <div class="prod-colores">
+                  <span class="mini-color" style="background:#1a1a1a"></span>
+                  <span class="mini-color" style="background:#c8a800"></span>
+                </div>
+                <button class="prod-ver-btn" onclick="abrirModal(4)">VER →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 5 -->
+      <div class="prod-card" data-id="5">
+        <div class="prod-card-inner" id="card5">
+          <div class="prod-card-face">
+            <div class="prod-img-wrap">
+              <img src="img/prenda5.png" alt="Tee Zero Two"/>
+              <div class="prod-shine" id="shine5"></div>
+              <span class="prod-num">05</span>
+              <span class="prod-badge">Camiseta</span>
+            </div>
+            <div class="prod-info">
+              <div>
+                <p class="prod-nombre">Tee Zero Two — DITF</p>
+                <p class="prod-precio">$22.99</p>
+              </div>
+              <div class="prod-footer">
+                <div class="prod-colores">
+                  <span class="mini-color" style="background:#1a1a1a"></span>
+                  <span class="mini-color" style="background:#8b0000"></span>
+                </div>
+                <button class="prod-ver-btn" onclick="abrirModal(5)">VER →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section class="nosotros" id="nosotros">
+    <div class="nosotros-inner">
+      <div class="nosotros-badge">◈ NUESTRA HISTORIA</div>
+      <h2 class="nosotros-titulo">DESDE <span>2016</span><br/>VISTIENDO TU PASIÓN</h2>
+      <p class="nosotros-desc">
+        Somos <strong>BuzoStore</strong>, una tienda ecuatoriana nacida en 2016 con una sola misión:
+        llevar el arte del anime a las calles. Cada prenda que diseñamos es una obra
+        de edición limitada, creada con materiales premium y estampados de alta
+        definición que no se desvanecen con el tiempo.
+      </p>
+      <p class="nosotros-desc">
+        Hacemos envíos a <strong>todo el Ecuador</strong> — desde Quito hasta el último rincón del país —
+        con empaque cuidado y entrega segura. Somos distribuidores con
+        <strong>tarjeta oficial de Crunchyroll</strong>, lo que nos permite traerte
+        diseños licenciados y auténticos de tus series favoritas.
+      </p>
+      <div class="nosotros-stats">
+        <div class="nos-stat">
+          <strong>+8</strong>
+          <span>AÑOS DE EXPERIENCIA</span>
+        </div>
+        <div class="nos-stat">
+          <strong>+500</strong>
+          <span>CLIENTES FELICES</span>
+        </div>
+        <div class="nos-stat">
+          <strong>🇪🇨</strong>
+          <span>ENVÍOS A TODO ECUADOR</span>
+        </div>
+        <div class="nos-stat">
+          <strong>✦</strong>
+          <span>DISTRIBUIDOR CRUNCHYROLL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- VIDEOS PROCESO -->
+<section class="videos-proceso" id="proceso">
+  <div class="seccion-header">
+    <p class="seccion-sub">— DETRÁS DE CADA PRENDA —</p>
+    <h2>EL <span>PROCESO</span></h2>
+  </div>
+
+  <div class="videos-grid">
+
+    <div class="video-card">
+      <div class="video-wrap">
+        <video src="video/proceso1.mp4" muted loop playsinline poster="img/prenda1.png"></video>
+        <div class="video-overlay">
+          <div class="play-icon">▶</div>
+          <span class="video-label">PROCESO 01</span>
+        </div>
+        <div class="video-info">
+          <p class="video-titulo">Kaoru Hana — Estampado</p>
+          <p class="video-sub">Del diseño al producto final</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-wrap">
+        <video src="video/proceso2.mp4" muted loop playsinline poster="img/prenda2.png"></video>
+        <div class="video-overlay">
+          <div class="play-icon">▶</div>
+          <span class="video-label">PROCESO 02</span>
+        </div>
+        <div class="video-info">
+          <p class="video-titulo">Hoodie Gojo — Confección</p>
+          <p class="video-sub">Calidad costura a costura</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-wrap">
+        <video src="video/proceso3.mp4" muted loop playsinline poster="img/prenda3.png"></video>
+        <div class="video-overlay">
+          <div class="play-icon">▶</div>
+          <span class="video-label">PROCESO 03</span>
+        </div>
+        <div class="video-info">
+          <p class="video-titulo">Toji Fushiguro — Acabados</p>
+          <p class="video-sub">Cada detalle importa</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+  <!-- CONTACTO -->
+  <section class="contacto" id="contacto">
+    <div class="contacto-inner">
+      <div class="nosotros-badge">◈ ENCUÉNTRANOS</div>
+      <h2 class="nosotros-titulo">SÍGUENOS &amp;<br/><span>CONTÁCTANOS</span></h2>
+      <p class="nosotros-desc">Estamos en todas las plataformas. Escríbenos y te respondemos en minutos.</p>
+
+      <div class="redes-grid">
+
+        <a class="red-card" href="https://www.facebook.com/share/1DTXjGVBXa/" target="_blank">
+          <div class="red-icon" style="background: linear-gradient(135deg,#1877f2,#0d5bbf)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </div>
+          <span class="red-nombre">FACEBOOK</span>
+          <span class="red-sub">Síguenos →</span>
+        </a>
+
+        <a class="red-card" href="https://www.tiktok.com/@chris81148" target="_blank">
+          <div class="red-icon" style="background: linear-gradient(135deg,#010101,#ff0050)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+            </svg>
+          </div>
+          <span class="red-nombre">TIKTOK</span>
+          <span class="red-sub">Síguenos →</span>
+        </a>
+
+        <a class="red-card" href="https://wa.me/593995301328" target="_blank">
+          <div class="red-icon" style="background: linear-gradient(135deg,#25d366,#128c7e)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+            </svg>
+          </div>
+          <span class="red-nombre">WHATSAPP</span>
+          <span class="red-sub">Escríbenos →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-3d" id="modal3d">
+      <button class="modal-x" onclick="cerrarModal()">✕</button>
+      <div class="modal-visor" id="modalVisor">
+        <div class="visor-bg-glow"></div>
+        <div class="modelo-3d">
+          <div class="producto-flotante" id="modalImg">
+            <img src="" alt="" id="modalImgSrc"/>
+          </div>
+        </div>
+        <p class="visor-hint">◈ ARRASTRA PARA ROTAR</p>
+      </div>
+      <div class="modal-info" id="modalInfo">
+        <span class="modal-badge-cat" id="modalCat">HOODIE</span>
+        <h2 class="modal-nombre" id="modalNombre">Nombre</h2>
+        <p class="modal-precio" id="modalPrecio">$00.000</p>
+        <p class="modal-desc" id="modalDesc">Descripción</p>
+        <div class="modal-tallas">
+          <p class="modal-label">TALLA</p>
+          <div class="tallas-wrap" id="tallasWrap">
+            <button class="talla-btn activa">S</button>
+            <button class="talla-btn">M</button>
+            <button class="talla-btn">L</button>
+            <button class="talla-btn">XL</button>
+            <button class="talla-btn">XXL</button>
+          </div>
+        </div>
+        <div class="modal-colores-wrap">
+          <p class="modal-label">COLOR</p>
+          <div id="modalColores" class="colores-row"></div>
+        </div>
+        <button class="btn-agregar" id="btnAgregar">
+          + AGREGAR AL CARRITO
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="gesture-toast" id="gestureToast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

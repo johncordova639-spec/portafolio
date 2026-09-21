@@ -1,0 +1,1 @@
+Coloca aquí texturas (madera, metal, tela, etc.) si las necesitas para los modelos.
