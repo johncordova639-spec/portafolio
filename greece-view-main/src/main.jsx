@@ -4,7 +4,7 @@ import ScrollyVideo from 'scrolly-video/dist/ScrollyVideo.esm.jsx';
 import { ArrowUpRight, Camera, Mail, Menu, MoveDown, X } from 'lucide-react';
 import './styles.css';
 
-const VIDEO_URL = '/lv_0_20260916003309.mp4';
+const VIDEO_URL = './lv_0_20260916003309.mp4';
 
 const sectionClass = 'px-[clamp(1.25rem,6vw,6.5rem)] py-[clamp(5.5rem,10vw,10.5rem)] max-[780px]:px-5 max-[780px]:py-[5.5rem]';
 const eyebrowClass = 'm-0 flex items-center gap-[.7rem] font-mono text-[.61rem] uppercase leading-[1.4] tracking-[.13em] text-muted';
