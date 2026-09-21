@@ -287,7 +287,7 @@ function App() {
     return () => { active = false; };
   }, []);
 
-  const ready = videoReady && pageReady;
+  const ready = pageReady;
 
   useEffect(() => {
     const previousBodyOverflow = document.body.style.overflow;
