@@ -61,22 +61,23 @@ function ArrowLink({ children, light = false }) {
   );
 }
 
-function Hero() {
+function Hero({ onVideoReady }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <section className="relative h-[300vh] bg-[#111] text-paper max-[780px]:h-[250vh]" id="top">
-      <div className="absolute inset-0 z-[1] h-full w-full overflow-hidden bg-[#111] [&_canvas]:h-full [&_canvas]:w-full [&_canvas]:object-contain [&_canvas]:object-center [&_video]:h-full [&_video]:w-full [&_video]:object-contain [&_video]:object-center" aria-hidden="true">
+      <div className="absolute inset-0 z-[1] h-full w-full bg-[#111] [&_canvas]:object-cover [&_video]:object-cover" aria-hidden="true">
         <ScrollyVideo
           src={VIDEO_URL}
           transitionSpeed={16}
           frameThreshold={0.04}
-          cover={false}
+          cover
           sticky
           full
           trackScroll
           lockScroll={false}
           useWebCodecs
+          onReady={onVideoReady}
         />
       </div>
       <div className="sticky top-0 z-[3] h-screen overflow-hidden after:absolute after:bottom-[1.05rem] after:left-[clamp(1.25rem,4vw,4.25rem)] after:right-[clamp(1.25rem,4vw,4.25rem)] after:z-[4] after:h-px after:bg-[rgba(245,243,238,.25)] after:content-['']">
@@ -260,6 +261,7 @@ function Footer() {
 }
 
 function App() {
+  const [videoReady, setVideoReady] = useState(false);
   const [pageReady, setPageReady] = useState(false);
 
   useEffect(() => {
@@ -276,7 +278,7 @@ function App() {
     return () => { active = false; };
   }, []);
 
-  const ready = pageReady;
+  const ready = videoReady && pageReady;
 
   useEffect(() => {
     const previousBodyOverflow = document.body.style.overflow;
@@ -313,7 +315,7 @@ function App() {
     <>
       <LoadingScreen ready={ready} />
       <main aria-hidden={!ready}>
-        <Hero />
+        <Hero onVideoReady={() => setVideoReady(true)} />
         <Journeys />
         <Experience />
         <Footer />
