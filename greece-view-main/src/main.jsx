@@ -63,15 +63,6 @@ function ArrowLink({ children, light = false }) {
 
 function Hero({ onVideoReady }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-width: 781px)');
-    const updateViewport = () => setIsDesktop(mediaQuery.matches);
-    updateViewport();
-    mediaQuery.addEventListener('change', updateViewport);
-    return () => mediaQuery.removeEventListener('change', updateViewport);
-  }, []);
 
   return (
     <section className="relative h-[300vh] bg-[#111] text-paper max-[780px]:h-[250vh]" id="top">
@@ -80,7 +71,7 @@ function Hero({ onVideoReady }) {
           src={VIDEO_URL}
           transitionSpeed={16}
           frameThreshold={0.04}
-          cover={!isDesktop}
+          cover
           sticky
           full
           trackScroll
@@ -287,7 +278,7 @@ function App() {
     return () => { active = false; };
   }, []);
 
-  const ready = pageReady;
+  const ready = videoReady && pageReady;
 
   useEffect(() => {
     const previousBodyOverflow = document.body.style.overflow;
