@@ -65,13 +65,13 @@ function Hero() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <section className="relative h-[300vh] bg-[#111] text-paper max-[780px]:h-[250vh]" id="top">
-      <div className="absolute inset-0 z-[1] h-full w-full overflow-hidden bg-[#111] [&_canvas]:h-full [&_canvas]:w-full [&_canvas]:object-cover [&_canvas]:object-center [&_video]:h-full [&_video]:w-full [&_video]:object-cover [&_video]:object-center" aria-hidden="true">
+    <section className="relative h-[380vh] bg-[#111] text-paper max-[780px]:h-[320vh]" id="top">
+      <div className="absolute inset-0 z-[1] h-full w-full overflow-hidden bg-[#111] [&_canvas]:h-full [&_canvas]:w-full [&_canvas]:object-contain [&_canvas]:object-center [&_video]:h-full [&_video]:w-full [&_video]:object-contain [&_video]:object-center" aria-hidden="true">
         <ScrollyVideo
           src={VIDEO_URL}
           transitionSpeed={16}
           frameThreshold={0.04}
-          cover
+          cover={false}
           sticky
           full
           trackScroll
