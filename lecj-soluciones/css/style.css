@@ -83,6 +83,8 @@ button{ font-family:inherit; cursor:pointer; border:none; background:none; color
 }
 .nav-inner{ display:flex; align-items:center; justify-content:space-between; max-width:1400px; margin:0 auto; }
 .nav-logo{ display:flex; align-items:center; gap:10px; }
+.brand-logo-image{ display:block; height:54px; object-fit:contain; object-position:left center; width:178px; }
+.footer-logo-image{ height:72px; width:235px; }
 .logo-mark{
   width:34px; height:34px; border-radius:9px;
   background: linear-gradient(135deg, var(--cyan), var(--violet));
