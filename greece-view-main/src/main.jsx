@@ -61,7 +61,7 @@ function ArrowLink({ children, light = false }) {
   );
 }
 
-function Hero({ onVideoReady }) {
+function Hero() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -77,7 +77,6 @@ function Hero({ onVideoReady }) {
           trackScroll
           lockScroll={false}
           useWebCodecs
-          onReady={onVideoReady}
         />
       </div>
       <div className="sticky top-0 z-[3] h-screen overflow-hidden after:absolute after:bottom-[1.05rem] after:left-[clamp(1.25rem,4vw,4.25rem)] after:right-[clamp(1.25rem,4vw,4.25rem)] after:z-[4] after:h-px after:bg-[rgba(245,243,238,.25)] after:content-['']">
@@ -261,7 +260,6 @@ function Footer() {
 }
 
 function App() {
-  const [videoReady, setVideoReady] = useState(false);
   const [pageReady, setPageReady] = useState(false);
 
   useEffect(() => {
@@ -278,7 +276,7 @@ function App() {
     return () => { active = false; };
   }, []);
 
-  const ready = videoReady && pageReady;
+  const ready = pageReady;
 
   useEffect(() => {
     const previousBodyOverflow = document.body.style.overflow;
@@ -315,7 +313,7 @@ function App() {
     <>
       <LoadingScreen ready={ready} />
       <main aria-hidden={!ready}>
-        <Hero onVideoReady={() => setVideoReady(true)} />
+        <Hero />
         <Journeys />
         <Experience />
         <Footer />
